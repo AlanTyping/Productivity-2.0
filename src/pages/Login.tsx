@@ -11,15 +11,11 @@ export function Login() {
   async function signInWithEmail() {
     try {
       const data = await supabase.auth.signInWithOtp({
-      email: 'alan.a.n.r.ar@gmail.com',
-      options: {
-        emailRedirectTo: 'https://productivity-2-0.vercel.app/'
-      },
+      email: email
     })
     } catch (error) {
       console.error(error)
     }
-    
   }
 
   const handleSubmit = (e: any) => {
@@ -27,12 +23,17 @@ export function Login() {
     setUser({
       email: email
     })
+    localStorage.setItem("email", email);
+
     signInWithEmail();
   }
+
+  console.log(localStorage.getItem("email"))
+
   return (
     <form onSubmit={handleSubmit}>
       <label>Email</label><br />
-      <input type="email" placeholder="email@site.com"onChange={(e) => setEmail(e.target.value)} /><br />
+      <input type="email" placeholder="email@site.com" onChange={(e) => setEmail(e.target.value)} /><br />
       <button>Submit</button>
     </form>
   )
