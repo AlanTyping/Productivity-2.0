@@ -11,7 +11,10 @@ export function Login() {
   async function signInWithEmail() {
     try {
       const data = await supabase.auth.signInWithOtp({
-      email: 'alan.a.n.r.ar@gmail.com'
+      email: 'alan.a.n.r.ar@gmail.com',
+      options: {
+        emailRedirectTo: 'https://productivity-2-0.vercel.app/'
+      },
     })
     } catch (error) {
       console.error(error)
