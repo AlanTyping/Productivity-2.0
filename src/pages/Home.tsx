@@ -6,6 +6,7 @@ export default function Home() {
     const email = localStorage.getItem("email");
     if (email === null) setVerified(false);
     else setVerified(true);
+    console.log(email);
     console.log(verified)
   }, []);
   return (
